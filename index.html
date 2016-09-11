@@ -6,30 +6,44 @@
 
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>@bfmags by bfmags</title>
+    <title>@bfmags</title>
+    <!--[if lt IE 9]>
+      <script>
+        document.createElement('video');
+      </script>
+    <![endif]-->
   </head>
 
   <body>
 
     <header>
       <div class="container">
-        <h1>@bfmags</h1>
-        <h2></h2>
-
-        <section id="downloads">
-          <a href="https://github.com/bfmags" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
+        <a href="https://github.com/bfmags" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
       </div>
     </header>
 
-    <div class="container">
-      <section id="main_content">
-        <p>bruno[at]bfmags.com</p>
-      </section>
-    </div>
-
+    <div id="overlay"></div>
+    <video playsinline autoplay muted loop poster="images/bkg.png" id="bgvid">
+      <source src="images/Joust_1982_Atari.webm" type="video/webm">
+      <source src="images/Joust_1982_Atari.mp4" type="video/mp4">
+    </video>
     
+    <script>
+    window.onload = function() {
+      var videoList = ["Commodore_Amiga_1990_Commodore_AU","Joust_1982_Atari"];
+      videoList.sort(function(a, b) {return 0.5 - Math.random()});
+
+      var videoEl = document.getElementById("bgvid");
+      var sources = videoEl.querySelectorAll('source');
+
+      sources[1].src = "images/" + videoList[0] + ".mp4";
+      sources[0].src = "images/" + videoList[0] + ".webm";
+
+      videoEl.load();
+      videoEl.play();
+    }
+    </script>
+
   </body>
 </html>
