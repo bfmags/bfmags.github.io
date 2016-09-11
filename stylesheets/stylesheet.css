@@ -28,14 +28,14 @@ video#bgvid {
 }
 
 /* mobile */
-@media screen and (max-device-width: 800px) {
-    html {
-         background: url("../images/bkg.png") #000 no-repeat center center fixed;
-    }
-    #bgvid {
-        display: none;
-    }
-}
+/*@media screen and (max-device-width: 800px) {*/
+/*    html {*/
+/*         background: url("../images/bkg.png") #000 no-repeat center center fixed;*/
+/*    }*/
+/*    #bgvid {*/
+/*        display: none;*/
+/*    }*/
+/*}*/
 
 /* General & 'Reset' Stuff */
 
