@@ -1,0 +1,64 @@
+Credits
+
+---------------------------------------------------------------------------------
+Joust_1982_Atari.mp4
+
+https://archive.org/details/Joust_1982_Atari.mp4
+
+Published 1982
+Computer Commercial: Joust (1982)(Atari).mp4
+
+---------------------------------------------------------------------------------
+Commodore_Amiga_1990_Commodore_AU.mp4
+
+https://archive.org/details/Commodore_Amiga_1990_Commodore_AU
+
+Published 1990
+Computer Commercial: Commodore Amiga (1990)(Commodore)(AU).mp4
+
+---------------------------------------------------------------------------------
+Evolutio2001_512kb.mp4
+
+https://archive.org/details/Evolutio2001
+
+Evolution of the Universe: Large-scale Structure and Galaxy Formation
+by Donna Cox, Stuart Levy, Robert Patterson
+
+Published 2001
+Topics Animation Screening Room 2001
+
+
+Visual excerpt from the PBS HDTV ''Runaway Universe'', courtesy WGBH-NOVA and Tom Lucas Productions.The Adaptive Mesh Refinement simulation grid automatically refines into subgrids to develop small-scale features, generating over half a terabyte of data. We see gravitation forming nested hierarchies which vary many orders of magnitude. Tiny fluctuations in the density of the early universe are amplified into a network of interconnected filaments. Condensing gas clouds give birth to new stars and merge into whirling galaxies which congregate, collide, and interact in a fiery cosmic dance.
+
+
+Run time 0:01:12
+Producer Donna Cox (visualization), Tom Lucas (NOVA)
+Production Company National Center for Supercomputing Applications
+Contact Information cox@ncsa.uiuc.edu<BR>virdir.ncsa.uiuc.edu/virdir/virdir.html<BR>605 East Springfield<BR><BR>Champaign, IL 61820<BR>United States<BR>217 244 2005<BR>Fax: 217 244 2909
+Credits
+
+Cosmological Adaptive Mesh Refinement Simulation: Michael Norman, Brian O'Shea and Greg Bryan, Grand Challenge Cosmology Consortium (GC3)
+
+---------------------------------------------------------------------------------
+sims_particle_dreams_1988_512kb.mp4
+
+https://archive.org/details/sims_particle_dreams_1988
+
+Particle Dreams
+by Karl Sims
+
+Published 1988
+Topics particle systems, animation, computer graphics, waterfall
+
+
+This short computer animation from 1988 contains a collection of dream sequences created using 3D particle systems techniques. Behavior rules are applied to thousands of individual particles to model complex phenomena such as an explosion, a snowstorm, a tumultuous head, and a waterfall. A Connection Machine CM-2 computer was used to perform physical simulations on thousands of particles simultaneously, one processor for each particle.
+
+
+Run time 1:30
+Audio/Visual sound, color
+Contact Information For further technical information see: "Particle Animation and Rendering Using Data Parallel Computation" K.Sims, Computer Graphics (Siggraph '90 proceedings), Aug. 1990, pp.405-413. For information on other works by Karl Sims visit: http://www.genarts.com/karl/
+Credits
+
+Software and Animation by Karl Sims 
+Sound by Robert Moore, BLC Sound
+---------------------------------------------------------------------------------
