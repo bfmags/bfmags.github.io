@@ -24,14 +24,18 @@
     </header>
 
     <div id="overlay"></div>
-    <video playsinline autoplay muted loop poster="images/bkg.png" id="bgvid">
+    <video playsinline muted loop poster="images/bkg.png" id="bgvid">
       <source src="" type="video/webm">
       <source src="" type="video/mp4">
     </video>
     
     <script>
     window.onload = function() {
-      var videoList = ["Commodore_Amiga_1990_Commodore_AU","Joust_1982_Atari","Evolutio2001_512kb","sims_particle_dreams_1988_512kb"];
+      var videoList = [ "Commodore_Amiga_1990_Commodore_AU",
+                        "Joust_1982_Atari",
+                        "Evolutio2001_512kb",
+                        "sims_particle_dreams_1988_512kb"
+                      ];
       videoList.sort(function(a, b) {return 0.5 - Math.random()});
 
       var videoEl = document.getElementById("bgvid");
@@ -41,7 +45,16 @@
       sources[0].src = "images/" + videoList[0] + ".webm";
 
       videoEl.load();
-      videoEl.play();
+
+      if(videoList[0].slice(-5) == "512kb"){
+        document.getElementById('bgvid').addEventListener('loadedmetadata', function() {
+          this.currentTime = 20;
+          videoEl.play();
+        }, false);
+      } else {
+        videoEl.play();
+      }
+
     }
     </script>
 
