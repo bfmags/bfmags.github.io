@@ -86,6 +86,13 @@
       }
 
     window.onload = function() {
+      window.applicationCache.addEventListener('updateready', function(e) {
+      if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+          // outdated : swap it in and reload the page to get the new hotness.
+          window.applicationCache.swapCache();
+          window.location.reload();
+        } 
+      }, false);
       loadNextVideo(0);
     }
     </script>
