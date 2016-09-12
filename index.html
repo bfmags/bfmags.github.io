@@ -3,10 +3,7 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-
     <title>@bfmags</title>
     <!--[if lt IE 9]>
       <script>
@@ -17,44 +14,79 @@
 
   <body>
 
-    <header>
-      <div class="container">
-        <a href="https://github.com/bfmags" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-      </div>
-    </header>
-
     <div id="overlay"></div>
-    <video playsinline muted loop poster="images/bkg.png" id="bgvid">
+    <div id="index"></div>
+    <div id="time"></div>
+    <video playsinline muted poster="media/bkg.png" id="bgvid">
       <source src="" type="video/webm">
       <source src="" type="video/mp4">
     </video>
     
     <script>
-    window.onload = function() {
-      var videoList = [ "Commodore_Amiga_1990_Commodore_AU",
-                        "Joust_1982_Atari",
-                        "Evolutio2001_512kb",
-                        "sims_particle_dreams_1988_512kb"
-                      ];
-      videoList.sort(function(a, b) {return 0.5 - Math.random()});
 
-      var videoEl = document.getElementById("bgvid");
-      var sources = videoEl.querySelectorAll('source');
+    var videoList = [ 
+            { title: 'Commodore_Amiga_1990_Commodore_AU', start:0, end:22 },
+            { title: 'Joust_1982_Atari', start:0, end:25 },
+            { title: 'Evolutio2001_512kb', start:15, end:59 },
+            { title: 'sims_particle_dreams_1988_512kb', start:7, end:78 }
+    ];
+    videoList.sort(function(a, b) {return 0.5 - Math.random()});
 
-      sources[1].src = "images/" + videoList[0] + ".mp4";
-      sources[0].src = "images/" + videoList[0] + ".webm";
+    var videoEl = document.getElementById('bgvid');
+    var sourcesEl = videoEl.querySelectorAll('source');
 
+    var loadNextVideo = function(currentVideoIndex) {
+
+      document.getElementById("index").innerHTML = videoList[currentVideoIndex].title;
+
+      var videoLoaded = false;
+      
+      sourcesEl[1].src = 'media/' + videoList[currentVideoIndex].title + '.mp4';
+      sourcesEl[0].src = 'media/' + videoList[currentVideoIndex].title + '.webm';
+      
       videoEl.load();
 
-      if(videoList[0].slice(-5) == "512kb"){
-        document.getElementById('bgvid').addEventListener('loadedmetadata', function() {
-          this.currentTime = 20;
+      videoEl .addEventListener('loadedmetadata', function() {
+          this.currentTime = videoList[currentVideoIndex].start || 0;
           videoEl.play();
+
+          function ended(){
+              if (!videoLoaded) {
+                  videoLoaded = true;
+                  currentVideoIndex = ((currentVideoIndex + 1) >= videoList.length ? 0 : currentVideoIndex + 1);
+                  loadNextVideo(currentVideoIndex);
+              }
+          }
+
+          videoEl.addEventListener('ended', ended);
+
+          function formatTime(seconds) {
+              minutes = Math.floor(seconds / 60);
+              minutes = (minutes >= 10) ? minutes : "0" + minutes;
+              seconds = Math.floor(seconds % 60);
+              seconds = (seconds >= 10) ? seconds : "0" + seconds;
+              return minutes + ":" + seconds;
+          }
+
+          function timeUpdate(){
+              document.getElementById("time").innerHTML = formatTime(videoEl.currentTime);
+              if(videoList[currentVideoIndex].end) {
+                  if(videoEl.currentTime >= videoList[currentVideoIndex].end && !videoLoaded) {
+                      videoLoaded = true;
+                      videoEl.pause();
+                      currentVideoIndex = ((currentVideoIndex + 1) >= videoList.length ? 0 : currentVideoIndex + 1);
+                      loadNextVideo(currentVideoIndex);
+                  }
+              }
+          }
+          videoEl.addEventListener('timeupdate', timeUpdate);
+
+
         }, false);
-      } else {
-        videoEl.play();
       }
 
+    window.onload = function() {
+      loadNextVideo(0);
     }
     </script>
 
