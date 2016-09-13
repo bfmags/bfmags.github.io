@@ -1,101 +1,140 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <title>@bfmags</title>
-    <!--[if lt IE 9]>
-      <script>
-        document.createElement('video');
-      </script>
-    <![endif]-->
-  </head>
+	<head>
+		<meta charset='utf-8'>
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+		<title>@bfmags</title>
+		<!--[if lt IE 9]>
+			<script>
+				document.createElement('video');
+			</script>
+		<![endif]-->
+	</head>
 
-  <body>
+	<body>
 
-    <div id="overlay"></div>
-    <div id="index"></div>
-    <div id="time"></div>
-    <video playsinline muted poster="media/bkg.png" id="bgvid">
-      <source src="" type="video/webm">
-      <source src="" type="video/mp4">
-    </video>
-    
-    <script>
+		<div id="overlay"></div>
 
-    var videoList = [ 
-            { title: 'Commodore_Amiga_1990_Commodore_AU', start:0, end:22 },
-            { title: 'Joust_1982_Atari', start:0, end:25 },
-            { title: 'Evolutio2001_512kb', start:15, end:59 },
-            { title: 'sims_particle_dreams_1988_512kb', start:7, end:78 }
-    ];
-    videoList.sort(function(a, b) {return 0.5 - Math.random()});
+<!-- <div class="wrapper">
+	<div class="centered"> -->
+		<div class="bfmags">
+			<div class='b'>
+				<div class='bb'></div>
+				<div class='bb'></div>
+				<div class='bb'></div>
+				<div class='bb'></div>
+				<div class='bb'></div>
+				<div class='bb'></div>
+			</div>
+			<div class='f'>
+				<div class='ff'></div>
+				<div class='ff'></div>
+				<div class='ff'></div>
+			</div>
+			<div class='m'>
+				<div class='mm'></div>
+				<div class='mm'></div>
+				<div class='mm'></div>
+			</div>
+			<div class='a'>
+				<div class='aa'></div>
+				<div class='aa'></div>
+			</div>
+			<div class='g'>
+				<div class='gg'></div>
+				<div class='gg'></div>
+				<div class='gg'></div>
+				<div class='gg'></div>
+			</div>
+			<div class='s'>
+				<div class='ss'></div>
+			</div>
+		</div>
+<!--     </div>
+</div> -->
 
-    var videoEl = document.getElementById('bgvid');
-    var sourcesEl = videoEl.querySelectorAll('source');
-
-    var loadNextVideo = function(currentVideoIndex) {
-
-      document.getElementById("index").innerHTML = videoList[currentVideoIndex].title;
-
-      var videoLoaded = false;
-      
-      sourcesEl[1].src = 'media/' + videoList[currentVideoIndex].title + '.mp4';
-      sourcesEl[0].src = 'media/' + videoList[currentVideoIndex].title + '.webm';
-      
-      videoEl.load();
-
-      videoEl .addEventListener('loadedmetadata', function() {
-          this.currentTime = videoList[currentVideoIndex].start || 0;
-          videoEl.play();
-
-          function ended(){
-              if (!videoLoaded) {
-                  videoLoaded = true;
-                  currentVideoIndex = ((currentVideoIndex + 1) >= videoList.length ? 0 : currentVideoIndex + 1);
-                  loadNextVideo(currentVideoIndex);
-              }
-          }
-
-          videoEl.addEventListener('ended', ended);
-
-          function formatTime(seconds) {
-              minutes = Math.floor(seconds / 60);
-              minutes = (minutes >= 10) ? minutes : "0" + minutes;
-              seconds = Math.floor(seconds % 60);
-              seconds = (seconds >= 10) ? seconds : "0" + seconds;
-              return minutes + ":" + seconds;
-          }
-
-          function timeUpdate(){
-              document.getElementById("time").innerHTML = formatTime(videoEl.currentTime);
-              if(videoList[currentVideoIndex].end) {
-                  if(videoEl.currentTime >= videoList[currentVideoIndex].end && !videoLoaded) {
-                      videoLoaded = true;
-                      videoEl.pause();
-                      currentVideoIndex = ((currentVideoIndex + 1) >= videoList.length ? 0 : currentVideoIndex + 1);
-                      loadNextVideo(currentVideoIndex);
-                  }
-              }
-          }
-          videoEl.addEventListener('timeupdate', timeUpdate);
+		
+		<div class="info">
+			<div id="index"></div>
+		</div>
 
 
-        }, false);
-      }
+		<video playsinline muted poster="media/bkg.png" id="bgvid">
+			<source src="" type="video/webm">
+			<source src="" type="video/mp4">
+		</video>
+		
+		<script>
 
-    window.onload = function() {
-      window.applicationCache.addEventListener('updateready', function(e) {
-      if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
-          // outdated : swap it in and reload the page to get the new hotness.
-          window.applicationCache.swapCache();
-          window.location.reload();
-        } 
-      }, false);
-      loadNextVideo(0);
-    }
-    </script>
+		var videoList = [ 
+						{ title: 'Commodore_Amiga_1990_Commodore_AU', start:0, end:22 },
+						{ title: 'Joust_1982_Atari', start:0, end:25 },
+						{ title: 'Evolutio2001_512kb', start:15, end:59 },
+						{ title: 'sims_particle_dreams_1988_512kb', start:9, end:78 }
+		];
+		videoList.sort(function(a, b) {return 0.5 - Math.random()});
 
-  </body>
+		var videoEl = document.getElementById('bgvid');
+		var sourcesEl = videoEl.querySelectorAll('source');
+
+		var loadNextVideo = function(currentVideoIndex) {
+
+			document.getElementById("index").innerHTML = videoList[currentVideoIndex].title;
+			
+			sourcesEl[1].src = 'media/' + videoList[currentVideoIndex].title + '.mp4';
+			sourcesEl[0].src = 'media/' + videoList[currentVideoIndex].title + '.webm';
+			
+			videoEl.load();
+
+			videoEl .addEventListener('loadedmetadata', function() {
+					this.currentTime = videoList[currentVideoIndex].start || 0;
+					
+					videoEl.play();
+
+					function ended(){
+							if (!videoList[currentVideoIndex].end) {
+									currentVideoIndex = ((currentVideoIndex + 1) >= videoList.length ? 0 : currentVideoIndex + 1);
+									loadNextVideo(currentVideoIndex);
+							}
+					}
+
+					videoEl.addEventListener('ended', ended);
+
+					function formatTime(seconds) {
+							minutes = Math.floor(seconds / 60);
+							minutes = (minutes >= 10) ? minutes : "0" + minutes;
+							seconds = Math.floor(seconds % 60);
+							seconds = (seconds >= 10) ? seconds : "0" + seconds;
+							return minutes + ":" + seconds;
+					}
+
+					function timeUpdate(){
+							// document.getElementById("time").innerHTML = formatTime(videoEl.currentTime);
+							if(videoList[currentVideoIndex].end) {
+									if(videoEl.currentTime >= videoList[currentVideoIndex].end) {
+											currentVideoIndex = ((currentVideoIndex + 1) >= videoList.length ? 0 : currentVideoIndex + 1);
+											loadNextVideo(currentVideoIndex);
+									}
+							}
+					}
+					videoEl.addEventListener('timeupdate', timeUpdate);
+
+
+				}, false);
+			}
+
+		window.onload = function() {
+			window.applicationCache.addEventListener('updateready', function(e) {
+			if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+					// outdated : swap it in and reload the page to get the new hotness.
+					window.applicationCache.swapCache();
+					window.location.reload();
+				} 
+			}, false);
+			loadNextVideo(0);
+		}
+		</script>
+
+	</body>
 </html>
