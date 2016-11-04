@@ -19,7 +19,20 @@
 		},
 
 		// Setting up listeners on initialisation
-		initialize: function () {
+		initialize: function (config) {
+
+			// Defaults to displayMode:'normal'
+			var defaults = {
+				mode : 'normal'
+			}
+			this.config = config || defaults;
+
+			// Change template if in 'small' displayMode
+			if(this.config.mode === 'no-edits') {
+				//disable edit events
+				console.log("here");
+			}
+
 			this.listenTo(this.model, 'change', this.render);
 			this.listenTo(this.model, 'destroy', this.remove);
 		},
@@ -54,7 +67,7 @@
 			if (trimmedValue) {
 				this.model.save({ name: toTitleCase(trimmedValue) });
 			} else {
-				this.clear();
+				//this.clear(); TODO: Shouldn't be destructive : update tests
 			}
 
 			this.$el.removeClass('editing');

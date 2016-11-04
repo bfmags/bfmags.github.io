@@ -17,8 +17,10 @@
 		// Bind to the events on the developers list (add,remove)
 		// Fetches from localStorage
 		initialize: function () {
+			//map containers
 			this.$input = this.$('.new-developer');
 			this.$main = this.$('.main');
+			this.$bar = this.$('.developers-bar-list');
 			this.$listRight = $('.developers-list.right');
 			this.$listLeft = $('.developers-list.left');
 			this.$clearButton = $('.clear-button');
@@ -51,6 +53,11 @@
 		// Add a single developer to the list
 		addOne: function (developer) {
 
+			//add to the developer bar
+			var devBarView = new PairGenerator.Views.DeveloperView({ model: developer});
+			this.$bar.append(devBarView.render().el);
+
+			//add to the matrix
 			if (PairGenerator.developersList.length === 1){
 				var view = new PairGenerator.Views.DeveloperView({ model: developer });
 				this.$listLeft.append(view.render().el);
@@ -72,9 +79,18 @@
 		addAll: function () {
 
 			// clear lists
+			this.$bar.html('');
 			this.$listRight.html('');
 			this.$listLeft.html('');
 
+			//add to developers list
+			PairGenerator.developersList.each( function(dev){ 
+				this.$bar.append( 
+					new PairGenerator.Views.DeveloperView({ model: dev }).render().el
+				);
+			}, this);
+
+			//build matrix
 			if (PairGenerator.developersList.length === 1){
 				PairGenerator.developersList.each( function(dev){ 
 					var view = new PairGenerator.Views.DeveloperView({ model: dev });
