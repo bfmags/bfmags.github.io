@@ -1,53 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Pairing Generator</title>
-        <!-- Stylesheets -->
-		<link rel="stylesheet" href="css/styles.css">
-    </head>
-        <body>
-		    <div class="background"></div>
-	        <div id="app">
-				<!-- App Container -->
-				<section class="appcontainer">
-					<header class="header">
-						<div class="logo"></div>
-						<input class="new-developer" placeholder="Add a new developer" autofocus>
-					</header>
-					<section class="developers-bar">
-						<ul class="developers-bar-list"></ul>
-					</section>
-					<section class="list">
-						<ul class="developers-list left"></ul>
-						<ul class="developers-list right"></ul>
-					</section>
-					<div hidden class="clear-button">
-						<span class="clear-text"><em>CLEAR</em></span>
-					</div>
-				</section>
-			</div>
-
-			<!-- Backbone Libraries -->
-			<script src="libs/jquery.min.js"></script>
-			<script src="libs/underscore-min.js"></script>
-			<script src="libs/backbone-min.js"></script>
-			<script src="libs/backbone.localStorage-min.js"></script>
-
-			<!-- Templates -->
-			<script type="text/template" id="developer-template">
-				<div class="view">
-					<label><%- name %></label>
-					<button class="destroy"></button>
-				</div>
-				<input hidden class="edit" value="<%- name %>">
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+		<title>@bfmags</title>
+		<!--[if lt IE 9]>
+			<script>
+				document.createElement('video');
 			</script>
+		<![endif]-->
+	</head>
 
-	        <!-- App Logic -->
-	        <script src="js/app.js"></script>
-			<script src="js/models/developer.js"></script>
-			<script src="js/collections/developers.js"></script>
-			<script src="js/views/developer-view.js"></script>
-			<script src="js/views/app-view.js"></script>
-        </body>
+	<body onclick="window.location.href='https://github.com/bfmags/creativeSpark';">
+
+		<div id="overlay"></div>
+
+		<div class="bfmags">
+			<div class='b'>
+				<div class='bb'></div>
+				<div class='bb'></div>
+				<div class='bb'></div>
+				<div class='bb'></div>
+				<div class='bb'></div>
+				<div class='bb'></div>
+			</div>
+			<div class='f'>
+				<div class='ff'></div>
+				<div class='ff'></div>
+				<div class='ff'></div>
+			</div>
+			<div class='m'>
+				<div class='mm'></div>
+				<div class='mm'></div>
+				<div class='mm'></div>
+			</div>
+			<div class='a'>
+				<div class='aa'></div>
+				<div class='aa'></div>
+			</div>
+			<div class='g'>
+				<div class='gg'></div>
+				<div class='gg'></div>
+				<div class='gg'></div>
+				<div class='gg'></div>
+			</div>
+			<div class='s'>
+				<div class='ss'></div>
+			</div>
+		</div>
+
+		<video playsinline muted poster="media/bkg.png" id="bgvid">
+			<source src="media/ESA-mars-footage.webm" type="video/webm">
+			<source src="media/ESA-mars-footage.mp4" type="video/mp4">
+		</video>
+		
+		<script>
+		window.onload = function() {
+			window.applicationCache.addEventListener('updateready', function(e) {
+			if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+					// outdated : swap it in and reload the page to get the new hotness.
+					window.applicationCache.swapCache();
+					window.location.reload();
+				} 
+			}, false);
+		
+			var videoEl = document.getElementById('bgvid');
+			var sourcesEl = videoEl.querySelectorAll('source');
+				
+			sourcesEl[1].src = 'media/ESA-mars-footage.mp4';
+			sourcesEl[0].src = 'media/ESA-mars-footage.webm';
+				
+			videoEl.load();
+			videoEl.addEventListener('loadedmetadata', function() {
+					videoEl.play();
+			}, false);
+
+			videoEl.addEventListener('ended', function() {	
+				window.location.href = 'https://github.com/bfmags/creativeSpark';
+			}, false);
+		}
+		</script>
+
+	</body>
 </html>
