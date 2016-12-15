@@ -1,62 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-	margin: 0;
-	padding: 0;
-	background: #151515 url("../media/bkg.png") 0 0;
+	background: #000;
 	background-size: cover;
 	color: #eaeaea;
 	font: 16px;
 	line-height: 1.5;
 	font-family: Terminal, monospace;
+	overflow: hidden;
 }
 
-video { display: block; }
-
-@media only screen
-and (min-device-width : 375px)
-and (max-device-width : 667px) {
-		video#bgvid {
-				display: none;
-		}
-		.bfmags {
-			width: 686px;
-			opacity: 1;
-			margin: 300px auto 0;
-			-ms-transform: scale(0.5);
-			-webkit-transform: scale(0.5);
-			transform: scale(0.5);
-			padding-left: 140px;
-		}
+.bfmags {
+	width: 686px;
+	margin: 200px auto 0;
+	padding-left: 150px;
+	animation:zoomin 20s linear 1;
 }
 
-@media only screen
-and (min-device-width : 668px) {
+@keyframes zoomin {
+    from {transform: scale(0.4); }
+    to {transform: scale(1); }
+}
 
-		video#bgvid {
-				position: fixed;
-				top: 50%;
-				left: 50%;
-				min-width: 100%;
-				min-height: 100%;
-				width: auto;
-				height: auto;
-				z-index: -100;
-				-ms-transform: translateX(-50%) translateY(-50%);
-				-moz-transform: translateX(-50%) translateY(-50%);
-				-webkit-transform: translateX(-50%) translateY(-50%);
-				transform: translateX(-50%) translateY(-50%);
-				background: url("../media/bkg.png") no-repeat;
-				background-size: cover;
-		}
+.bfmags-svg{
+	position: relative;
+  top: 83px;
+  left: -67px;
+  width: 652px;
+	animation:fadein 12s linear 1;
+	z-index: 4;
+}
 
-		.bfmags {
-			width: 686px;
-			opacity: 1;
-			margin: 300px auto 0;
-			-ms-transform: scale(0.7);
-			-webkit-transform: scale(0.7);
-			transform: scale(0.7);
-			padding-left: 150px;
-		}
+@keyframes fadein {
+    0% { opacity: 0; }
+		70% { opacity: 0; }
+ 		100% { opacity: 1; }
 }
 
 #overlay {
@@ -120,16 +101,6 @@ and (min-device-width : 668px) {
 	width: 12px;
 	height: 50px;
 	transform: skew(20deg);
-}
-
-.aa:nth-child(3) {
-	position: absolute;
-	z-index: 1;
-	top: 30px;
-	left: 50%;
-	width: 20px;
-	height: 10px;
-	margin-left: -10px;
 }
 
 .bb:nth-child(1) {
@@ -325,11 +296,12 @@ z-index: 2;
 	animation-delay: 2s;
 }
 
+.aa:nth-child(2),
 .ff:nth-child(1) {
 	animation-delay: 3s;
 }
 
-.aa:nth-child(2) {
+.gg:nth-child(1) {
 	animation-delay: 4s;
 }
 
@@ -343,9 +315,8 @@ z-index: 2;
 	animation-delay: 6s;
 }
 
-.aa:nth-child(2),
-.gg:nth-child(1),
-.bb:nth-child(3) {
+.bb:nth-child(3),
+.aa:nth-child(1) {
 	animation-delay: 7s;
 }
 
@@ -356,8 +327,7 @@ z-index: 2;
 }
 
 .gg:nth-child(3),
-.bb:nth-child(4),
-.aa:nth-child(1) {
+.bb:nth-child(4) {
 	animation-delay: 9s;
 }
 
@@ -369,7 +339,7 @@ z-index: 2;
 .social-box {
 	position:absolute;
 	margin-top: 90px;
-	transform: scale(0.5);
+	transform: scale(0.6);
 }
 
 .stackoverflow, .github, .linkedin {
@@ -382,7 +352,7 @@ z-index: 2;
 .stackoverflow {
 	height:43px;
 	width:170px;
-	animation-delay: 4s;
+	animation-delay: 10s;
 	margin-top: -17px;
 	left: 160px;
 }
@@ -390,15 +360,15 @@ z-index: 2;
 .github {
 	height:35px;
 	width:135px;
-	animation-delay: 6s;
+	animation-delay: 12s;
+	margin-top: 2px;
 }
 
 .linkedin {
 	height:43px;
 	width:170px;
-	animation-delay: 2s;
-	left: 422px;
-	margin-top: -3px;
+	animation-delay: 8s;
+	left: 425px;
 }
 
 @keyframes fadeInSocial {
@@ -410,4 +380,28 @@ z-index: 2;
 		opacity: 1;
 		top: 0px;
 	}
+}
+
+@keyframes clouds {
+    from {
+			filter: hue-rotate(-90deg);
+			background-position:0 0;
+		}
+    to {
+			filter: hue-rotate(90deg);
+			background-position:10000px 0;
+		}
+}
+
+.clouds {
+  position:absolute;
+  top:100px;
+  left:0;
+  width:100%;
+  height:100%;
+  display:block;
+	pointer-events: none;
+  background:transparent url("../media/clouds-panda.png") repeat-x center center;
+  z-index:6;
+  animation:clouds 200s linear infinite;
 }
