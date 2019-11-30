@@ -1,49 +1,17 @@
+
 <!DOCTYPE html>
-<html>
+<html lang='en' class=''>
 <head>
-<meta charset="UTF-8">
-<style>
-    body {
-        margin: 0;
-        background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAAAXNSR0IArs4c6QAAAE5JREFUGBljYEADq+es/o8mhMmFKdqxfAFuxTBFMO175/RhKj7UdAhTEKjj5uRihPjrKa8RHJhxSPSVwxPwyiMpZWC4eHE58YpRdOLjAAAWwx5y2yrbqwAAAABJRU5ErkJggg==) repeat;
-    }
-    p {
-        background-color: white;
-        width: 600px;
-        transition: all 0.2s ease-in;
-        -webkit-box-shadow: 10px 10px 44px -26px rgba(0,0,0,0.75);
-        -moz-box-shadow: 10px 10px 44px -26px rgba(0,0,0,0.75);
-        box-shadow: 10px 10px 44px -26px rgba(0,0,0,0.75);
-        opacity: 0.75;
-    }
-    p:hover {
-        transform: scale(1.05, 1.05);
-        cursor: pointer;
-        opacity: 1;
-    }
-    .header {
-        width:100%;
-        height: 120px;
-        padding: 20px;
-        text-align: center;
-    }
-    </style>
-<title>bfmags</title>
+<meta charset='UTF-8'>
+<style class="cp-pen-styles">
+          /* ---- reset ---- */ body{ margin:0; font:normal 75% Arial, Helvetica, sans-serif; } canvas{ display: block; vertical-align: bottom; } /* ---- particles.js container ---- */ #particles-js{ position:absolute; width: 100%; height: 100%; background-color: #000000; background-image: url(""); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; } /* ---- stats.js ---- */ .count-particles{ background: #000022; position: absolute; top: 48px; left: 0; width: 80px; color: #13E8E9; font-size: .8em; text-align: left; text-indent: 4px; line-height: 14px; padding-bottom: 2px; font-family: Helvetica, Arial, sans-serif; font-weight: bold; } .js-count-particles{ font-size: 1.1em; } #stats, .count-particles{ -webkit-user-select: none; margin-top: 5px; margin-left: 5px; } #stats{ border-radius: 3px 3px 0 0; overflow: hidden; } .count-particles{ border-radius: 0 0 3px 3px; }
+        </style>
 </head>
-
 <body>
-<div class="header">
-    <img src="https://user-images.githubusercontent.com/3740101/65393104-8a6f3700-dd74-11e9-9942-1da0cdcd9403.png" width="5000px">
-</div>
-<div align="center">
-    <p><img src="https://cloud.githubusercontent.com/assets/3740101/20558707/4c3fe784-b169-11e6-9e45-1bee52a5b0a9.gif" width="600px"></p>
-    <p><img src="https://user-images.githubusercontent.com/3740101/65388555-02be0400-dd45-11e9-850e-b8d39c553f7d.png" width="605px"></p>
-    <p><img src="https://cloud.githubusercontent.com/assets/3740101/20559428/437b5298-b16c-11e6-81d4-75a714158b40.gif" width="600px"></p>
-    <p><img src="https://user-images.githubusercontent.com/3740101/65390426-951ad380-dd56-11e9-996d-62ac3c8a60d8.png" width="600px"></p>
-    <p><img src="https://user-images.githubusercontent.com/3740101/65390003-0e182c00-dd53-11e9-8cde-987194f1d66c.gif" width="600px"></p>
-    <p></p>
-</div>
-
+ <div id="particles-js"></div>  
+ <script src="particles.min.js"></script>  
+ <script id="rendered-js">
+  particlesJS("particles-js", { "particles": { "number": { "value": 351, "density": { "enable": true, "value_area": 400.851810096455 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 0.5, "random": true, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 2, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": false, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 1, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": false, "mode": "bubble" }, "resize": true }, "modes": { "grab": { "distance": 0, "line_linked": { "opacity": 0 } }, "bubble": { "distance": 146.17434335744196, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 81.2079685319122, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true });var count_particles, stats, update;stats = new Stats();stats.setMode(1);count_particles = document.querySelector('.js-count-particles');update = function () {stats.begin();stats.end();if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;};requestAnimationFrame(update);};requestAnimationFrame(update);;
+  </script>
 </body>
-
 </html>
